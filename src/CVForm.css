@@ -1,0 +1,139 @@
+.cv-container {
+  display: grid;
+  height: 1200px;
+  margin: 80px 40px 10px 40px;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 160px auto 30px;
+  grid-template-areas:
+    "cv-header cv-header cv-header cv-header cv-header cv-header cv-header cv-header"
+    "left-sidebar left-sidebar left-sidebar right-sidebar right-sidebar right-sidebar right-sidebar right-sidebar"
+    "footer footer footer footer footer footer footer footer";
+  grid-gap: 0.5rem;
+  border: 1px solid blue;
+}
+
+#cv-header {
+  grid-area: cv-header;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 0.5rem;
+  background-image: url("images/Background_Default.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#cv-header-candidate {
+  grid-column: 1/4;
+  padding: 20px 30px 0px 0px;
+  text-align: right;
+}
+
+#cv-header-candidate textarea {
+  width: 80%;
+  line-height: 30px;
+  font-family: Arial, Helvetica, sans-seriff;
+  text-align: right;
+  text-transform: uppercase;
+  background: none;
+  color: white;
+}
+
+.name {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.role {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#profile-photo {
+  grid-column: 1/9;
+  position: relative;
+  top: -35px;
+  border-radius: 50%;
+  border: 7px solid white;
+  justify-self: center;
+  z-index: 1;
+}
+
+.section {
+  padding: 10px;
+  border: 1px solid blue;
+}
+
+.textarea {
+  width: 100%;
+  /* height: 80%; */
+}
+
+.sidebar {
+  display: grid;
+  grid-template-rows: 130px auto;
+  background: lightgrey;
+  padding: 15px;
+}
+
+#left-sidebar {
+  grid-area: left-sidebar;
+}
+
+#right-sidebar {
+  grid-area: right-sidebar;
+}
+
+#right-sidebar .align-right {
+  text-align: right;
+  float: right;
+}
+
+input,
+.contact {
+  margin: 4px 0px;
+  padding: 0px 5px 0px 5px;
+  display: block;
+  width: 100%;
+}
+
+#left-sidebar .bottom-section {
+  display: grid;
+}
+
+#right-sidebar .bottom-section {
+  display: grid;
+  grid-template-rows: max-content;
+}
+
+#self-definition {
+  height: auto;
+}
+
+#strength {
+  height: auto;
+}
+
+#mentor-opinion {
+  height: auto;
+}
+
+#recent-projects {
+  height: auto;
+}
+
+#work-experience {
+  height: auto;
+}
+
+#educations {
+  height: auto;
+}
+
+#spoken-language {
+  height: auto;
+}
+
+footer {
+  grid-area: footer;
+  background: lightgrey;
+}
