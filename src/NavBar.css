@@ -1,0 +1,27 @@
+.navbar-header {
+  height: 70px;
+  background: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.navbar-list {
+  display: inline;
+}
+
+.navbar-list-item {
+  display: inline;
+  margin: 20px;
+}
+
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+}
