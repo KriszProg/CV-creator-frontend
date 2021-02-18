@@ -17,13 +17,27 @@
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-gap: 0.5rem;
-  background-image: url("images/Background_Default.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+}
+
+.content {
+  display: contents;
+}
+
+.hidden-element {
+  display: none;
+}
+
+#background-img {
+  width: 100%;
+  height: 160px;
+  grid-column: 1/9;
+  grid-row: 1/1;
+  cursor: pointer;
 }
 
 #cv-header-candidate {
   grid-column: 1/4;
+  grid-row: 1/1;
   padding: 20px 30px 0px 0px;
   text-align: right;
 }
@@ -50,8 +64,12 @@
 
 #profile-photo {
   grid-column: 1/9;
+  grid-row: 1/1;
+  width: 170px;
+  height: 170px;
+  cursor: pointer;
   position: relative;
-  top: -35px;
+  top: 75px;
   border-radius: 50%;
   border: 7px solid white;
   justify-self: center;
@@ -88,7 +106,6 @@
   float: right;
 }
 
-input,
 .contact {
   margin: 4px 0px;
   padding: 0px 5px 0px 5px;
