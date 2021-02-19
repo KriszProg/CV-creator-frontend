@@ -13,6 +13,9 @@ function NavBar() {
                     <Link className='navbar-link' to='/add'>CREATE CV</Link>
                 </li>
                 <li className='navbar-list-item'>
+                    <Link className='navbar-link' to='/cv/all'>MY CV'S</Link>
+                </li>
+                <li className='navbar-list-item'>
                     <Link className='navbar-link' to='/about'>ABOUT</Link>
                 </li>
             </ul>
