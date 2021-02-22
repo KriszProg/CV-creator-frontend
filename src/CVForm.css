@@ -3,8 +3,9 @@
   height: 1200px;
   margin: 80px 40px 10px 40px;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: 160px auto 30px;
+  grid-template-rows: 55px 160px auto 30px;
   grid-template-areas:
+    "control-panel control-panel control-panel control-panel control-panel control-panel control-panel control-panel"
     "cv-header cv-header cv-header cv-header cv-header cv-header cv-header cv-header"
     "left-sidebar left-sidebar left-sidebar right-sidebar right-sidebar right-sidebar right-sidebar right-sidebar"
     "footer footer footer footer footer footer footer footer";
@@ -12,11 +13,51 @@
   border: 1px solid blue;
 }
 
-#cv-header {
-  grid-area: cv-header;
+.grid-box {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-gap: 0.5rem;
+}
+
+#control-panel {
+  grid-area: control-panel;
+  background: lightgrey;
+}
+
+#title-controller-box {
+  grid-column: 1/4;
+  grid-row: 1/1;
+  display: flex;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 10px 30px 10px 0px;
+  text-align: right;
+}
+
+#cv-title-label {
+  margin-left: 20px;
+  margin-right: 15px;
+  color: black;
+}
+
+#title-controller-box textarea {
+  resize: none;
+  width: 80%;
+  border: 3px solid transparent;
+  font-size: 25px;
+  font-weight: bold;
+  background: none;
+  color: darkblue;
+}
+
+#title-controller-box textarea:hover {
+  cursor: pointer;
+  border: 3px solid darkblue;
+  border-radius: 4px;
+}
+
+#cv-header {
+  grid-area: cv-header;
 }
 
 .content {
@@ -45,7 +86,6 @@
 #cv-header-candidate textarea {
   width: 80%;
   line-height: 30px;
-  font-family: Arial, Helvetica, sans-seriff;
   text-align: right;
   text-transform: uppercase;
   background: none;
@@ -83,6 +123,7 @@
 
 .textarea {
   width: 100%;
+  font-family: Arial, Helvetica, sans-seriff;
   /* height: 80%; */
 }
 

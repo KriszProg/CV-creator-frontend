@@ -4,7 +4,7 @@ import '../CVForm.css';
 
 function CVHeader() {
     return (
-        <div id="cv-header">
+        <div className='grid-box' id="cv-header">
             <ImgUploader element='background-img'/>
             <div id='cv-header-candidate'>
                 <textarea className='textarea name' id='candidate-name' name='candidate-name' rows='1' max-rows='1' maxLength='18'></textarea>
