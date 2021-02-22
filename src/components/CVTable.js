@@ -1,22 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import RequestHandler from '../service/RequestHandler';
+import ErrorMsg from './ErrorMsg';
 import CVTableLine from './CVTableLine';
 import '../CVTable.css';
 
 function CVTable() {
-    const [loaded, setLoaded] = useState(false);
-    const [savedCV, setSavedCV] = useState([]);
+    const requestHandler = new RequestHandler();
+    const url = 'http://localhost:8080/cv/all';
+    const [isLoading, setIsLoading] = useState(true);
+    const [fetchedCVs, setFetchedCVs] = useState([]);
+    const [errorHandler, setErrorHandler] = useState(null);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/cv/all')
-            .then((response) => {
-                setSavedCV(response.data);
-                setLoaded(true);
-            });
+        requestHandler.getFromSource(url, setFetchedCVs, setErrorHandler);
+        setIsLoading(false);
     }, []);
 
-    if(!loaded) {
+    if(isLoading) {
         return(<div>Please wait...</div>);
+    }
+
+    //Error handling:
+    if(errorHandler) {
+        const {type, systemMsg} = errorHandler;
+        const customMsg = 'Ooops! An Error occured while trying to reach the server!';
+        
+        return (
+            <ErrorMsg type={errorHandler.name} systemMsg = {errorHandler.message} customMsg={customMsg} />
+        )
     }
 
     return (
@@ -30,7 +41,7 @@ function CVTable() {
                 </tr>
                 </thead>
                 <tbody>
-                    {savedCV.map((cv) => {
+                    {fetchedCVs.map((cv) => {
                         return (
                             <CVTableLine
                                 key={cv.id}
