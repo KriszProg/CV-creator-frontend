@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Main from './components/Main';
 import CVForm from './components/CVForm';
+import CVTable from './components/CVTable';
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
     <Switch>
       <Route exact={true} path='/' component={Main}/>
       <Route exact={true} path='/add' component={CVForm}/>
+      <Route exact={true} path='/cv/all' component={CVTable}/>
+      <Route exact={true} path='/cv/edit/:id' component={CVForm}/>
     </Switch>
     </BrowserRouter>
   );
