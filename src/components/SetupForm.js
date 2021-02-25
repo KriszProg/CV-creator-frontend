@@ -36,7 +36,7 @@ function SetupForm() {
                 <h2>Setup Title of your new CV</h2>
                 <input type='text' id='input-cv-title' name='input-cv-title' placeholder='Enter the title of your CV...'/>
                 <div>
-                    <button id='submit-button' type='submit'>SUBMIT</button>
+                    <button className='submit-button' type='submit'>SUBMIT</button>
                 </div>
             </form>
             
