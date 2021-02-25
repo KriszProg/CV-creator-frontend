@@ -13,13 +13,13 @@ function CVForm(props) {
     
     const url = `http://localhost:8080/cv/${id}`;
     const [isLoading, setIsLoading] = useState(true);
-    const [fetchedCV, setFetchedCV] = useState({});
+    const [fetchedCV, setFetchedCV] = useState(null);
     const [errorHandler, setErrorHandler] = useState(null);
 
     useEffect(() => {
         requestHandler.getFromSource(url, setFetchedCV, setErrorHandler);
         setIsLoading(false)
-    }, [id]);
+    }, []); //[id]
 
     if(isLoading) {
         return(<div>Please wait...</div>);
@@ -34,15 +34,18 @@ function CVForm(props) {
         )
     }
 
-    return (
-        <div className='cv-container'>
-            <ControlPanel cv={fetchedCV}/>
-            <CVHeader/>
-            <LeftSidebar/>
-            <RightSidebar/>
-            <footer>Footer</footer>
-        </div>
-    )
+    if(fetchedCV) {
+        return (
+            <div className='cv-container'>
+                <ControlPanel cvIdentifiers={fetchedCV.cvIdentifiers}/>
+                <CVHeader candidate={fetchedCV.candidate}/>
+                <LeftSidebar fetchedCV = {fetchedCV}/>
+                <RightSidebar/>
+                <footer>Footer</footer>
+            </div>
+        )
+    }
+    return(<div></div>);
 }
 
 export default CVForm;
