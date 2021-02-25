@@ -53,14 +53,15 @@ function InputSectionSimple(props) {
         requestHandler.postToSource(url, objectToPost, setFetchedData, setErrorHandler);
     }
 
-    //Need any id to wrapper div?
     return (
         <div className='section'> 
             <form onSubmit={saveInput}>
+            <div className="inline-button">
                 <h2>{sectionTitle}</h2>
+                <button className='submit-button' type='submit'>SUBMIT</button>
+            </div>
                 <TitleSeparator/>
                 <textarea className='textarea input-field' id={URLEndpoint} name='input-field' rows='12' maxLength='780' defaultValue={object}></textarea>
-                <button className='submit-button' type='submit'>SUBMIT</button>
             </form>
         </div>
     )

@@ -121,6 +121,11 @@
   border: 1px solid blue;
 }
 
+.inline-button {
+  display: flex;
+  justify-content: space-between;
+}
+
 .textarea {
   width: 100%;
   font-family: Arial, Helvetica, sans-seriff;
