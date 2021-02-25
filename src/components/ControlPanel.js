@@ -2,7 +2,7 @@ import React from 'react';
 import '../CVForm.css';
 
 function ControlPanel(props) {
-    const {id, title, creationDate} = props.cv; 
+    const {id, title, creationDate} = props.cvIdentifiers; 
 
     return (
         <div className='grid-box' id='control-panel'>
