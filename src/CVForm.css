@@ -156,6 +156,7 @@
 
 #left-sidebar .bottom-section {
   display: grid;
+  /* grid-template-rows: max-content; */
 }
 
 #right-sidebar .bottom-section {
@@ -163,16 +164,8 @@
   grid-template-rows: max-content;
 }
 
-#self-definition {
-  height: auto;
-}
-
-#strength {
-  height: auto;
-}
-
-#mentor-opinion {
-  height: auto;
+.input-field {
+  padding: 5px;
 }
 
 #recent-projects {
