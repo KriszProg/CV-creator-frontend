@@ -24,14 +24,48 @@
   background: lightgrey;
 }
 
-#title-controller-box {
+#control-panel-form {
+  grid-column: 1/9;
+  display: contents;
+}
+
+#control-panel-left-box {
   grid-column: 1/4;
-  grid-row: 1/1;
   display: flex;
   font-size: 25px;
   font-weight: bold;
   padding: 10px 30px 10px 0px;
-  text-align: right;
+}
+
+#control-panel-right-box {
+  grid-column: 4/9;
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 10px 15px 10px 0px;
+}
+
+#control-panel-right-box label {
+  margin-right: 10px;
+}
+
+.candidate {
+  width: 35%;
+  padding: 0px 5px 0px 5px;
+  resize: none;
+  font-family: Arial, Helvetica, sans-seriff;
+  line-height: 1.8;
+  font-size: 18px;
+  font-weight: bold;
+  overflow: hidden;
+  color: darkblue;
+}
+
+.controller-box-inline-button {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 30px 10px 0px;
 }
 
 #cv-title-label {
@@ -40,7 +74,7 @@
   color: black;
 }
 
-#title-controller-box textarea {
+.title {
   resize: none;
   width: 80%;
   border: 3px solid transparent;
@@ -50,7 +84,7 @@
   color: darkblue;
 }
 
-#title-controller-box textarea:hover {
+#control-panel-left-box textarea:hover {
   cursor: pointer;
   border: 3px solid darkblue;
   border-radius: 4px;
@@ -83,7 +117,7 @@
   text-align: right;
 }
 
-#cv-header-candidate textarea {
+#cv-header-candidate {
   width: 80%;
   line-height: 30px;
   text-align: right;
@@ -92,12 +126,12 @@
   color: white;
 }
 
-.name {
+#display-name {
   font-size: 28px;
   font-weight: bold;
 }
 
-.role {
+#display-role {
   font-size: 15px;
   font-weight: bold;
 }
@@ -119,6 +153,11 @@
 .section {
   padding: 10px;
   border: 1px solid blue;
+}
+
+.inline-button {
+  display: flex;
+  justify-content: space-between;
 }
 
 .textarea {
