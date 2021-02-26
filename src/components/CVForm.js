@@ -10,16 +10,43 @@ import '../CVForm.css';
 function CVForm(props) {
     const requestHandler = new RequestHandler();
     const id = props.match.params.id;
-    
     const url = `http://localhost:8080/cv/${id}`;
+    
     const [isLoading, setIsLoading] = useState(true);
     const [fetchedCV, setFetchedCV] = useState(null);
     const [errorHandler, setErrorHandler] = useState(null);
+    
+    const urlForPost = `http://localhost:8080/cv/${id}/update/title-and-candidate`;
+    const [response, setResponse] = useState(null);
+
+    const saveInput = (e, url) => {
+        e.preventDefault();
+        let titleValue = document.getElementById('cv-title').value;
+        let nameValue = document.getElementById('candidate-name').value;
+        let roleValue = document.getElementById('candidate-role').value;
+        const objectToPost = {
+            title: titleValue,
+            candidate: {
+            name: nameValue,
+            role: roleValue,
+            },
+        };
+        // console.log('objectToPost: ', objectToPost);
+        requestHandler.postToSource(urlForPost, objectToPost, setResponse, setErrorHandler);
+    }
 
     useEffect(() => {
-        requestHandler.getFromSource(url, setFetchedCV, setErrorHandler);
-        setIsLoading(false)
-    }, []); //[id]
+        // console.log('*** CVForm useEffect executed ***');
+        if (response===null) {
+            // console.log('actual state of response: ', response);
+            // console.log('fecthCV starts here...')
+            requestHandler.getFromSource(url, setFetchedCV, setErrorHandler);
+            setIsLoading(false)
+        } else  {
+            // console.log('Skip fetch and Im gonna set the response to null');
+            setResponse(null);
+        }
+    }, [response]);
 
     if(isLoading) {
         return(<div>Please wait...</div>);
@@ -37,8 +64,8 @@ function CVForm(props) {
     if(fetchedCV) {
         return (
             <div className='cv-container'>
-                <ControlPanel cvIdentifiers={fetchedCV.cvIdentifiers}/>
-                <CVHeader candidate={fetchedCV.candidate}/>
+                <ControlPanel fetchedCV={fetchedCV} saveInput={saveInput}/>
+                <CVHeader fetchedCV={fetchedCV}/>
                 <LeftSidebar fetchedCV = {fetchedCV}/>
                 <RightSidebar/>
                 <footer>Footer</footer>
