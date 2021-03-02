@@ -1,26 +1,17 @@
 import React, { useState, useEffect }from 'react';
 import TitleSeparator from '../styled-components/TitleSeparator';
-import RequestHandler from '../service/RequestHandler';
 import '../CVForm.css';
 
-function InputSectionSimple(props) {
-    const requestHandler = new RequestHandler();
+function SectionSingleData(props) {
     const CVId = props.CVId;
+    const saveInput = props.saveInput;
     const sectionTitle = props.sectionTitle !== null ? props.sectionTitle : '';
     const object = props.object !== null ? props.object : '';
 
     const [URLEndpoint, setURLEndpoint] = useState(null);
     const [objectKey, setObjectKey] = useState(null);
-    const [fetchedData, setFetchedData] = useState();
-    const [errorHandler, setErrorHandler] = useState(null);
 
-    const url = `http://localhost:8080/cv/${CVId}/update/${URLEndpoint}`;
-
-    // console.log('***Section title***', sectionTitle);
-    // console.log('url: ',  url);
-    // console.log('objectKey: ', objectKey);
-    // console.log('URLEndpoint: ', URLEndpoint);
-    // console.log('******************');
+    const urlForPost = `http://localhost:8080/cv/${CVId}/update/${URLEndpoint}`;
 
     useEffect(() => {
         // console.log('*** useEffect executed from:', sectionTitle);
@@ -44,18 +35,18 @@ function InputSectionSimple(props) {
         }
     }
 
-    const saveInput = (e) => {
+    const prepareAndSave = (e) => {
         e.preventDefault();
         let inputText = document.getElementById(URLEndpoint).value;
         const objectToPost = {
             [objectKey]: inputText
         };
-        requestHandler.postToSource(url, objectToPost, setFetchedData, setErrorHandler);
+        saveInput(urlForPost, objectToPost);
     }
 
     return (
         <div className='section'> 
-            <form onSubmit={saveInput}>
+            <form onSubmit={prepareAndSave}>
             <div className="inline-button">
                 <h2>{sectionTitle}</h2>
                 <button className='submit-button' type='submit'>SUBMIT</button>
@@ -67,4 +58,4 @@ function InputSectionSimple(props) {
     )
 }
 
-export default InputSectionSimple;
+export default SectionSingleData;

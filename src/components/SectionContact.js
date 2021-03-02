@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
-import RequestHandler from '../service/RequestHandler';
 import TitleSeparator from '../styled-components/TitleSeparator';
 import '../CVForm.css';
 
 function SectionContact(props) {
     const CVId = props.CVId;
+    const saveInput = props.saveInput;
     const {email, phoneNr, linkedInProfile} = props.contact !== null ? props.contact : '';
     
-    const requestHandler = new RequestHandler();
     const url = `http://localhost:8080/cv/${CVId}/update/contact`;
 
-    const [fetchedData, setFetchedData] = useState();
-    const [errorHandler, setErrorHandler] = useState(null);
-
-    const saveInput = (e) => {
+    const prepareAndSave = (e) => {
         e.preventDefault();
         let emailValue = document.getElementById('email').value;
         let phoneValue = document.getElementById('phone').value;
@@ -23,12 +19,12 @@ function SectionContact(props) {
             phoneNr: phoneValue,
             linkedInProfile: linkedinValue
         };
-        requestHandler.postToSource(url, objectToPost, setFetchedData, setErrorHandler);
+        saveInput(url, objectToPost);
     }
 
     return (
         <div className='section'>
-            <form onSubmit={saveInput}>
+            <form onSubmit={prepareAndSave}>
                 <div className="inline-button">
                     <h2>Contact</h2>
                     <button className='submit-button' type='submit'>SUBMIT</button>

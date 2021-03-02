@@ -15,38 +15,22 @@ function CVForm(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [fetchedCV, setFetchedCV] = useState(null);
     const [errorHandler, setErrorHandler] = useState(null);
-    
-    const urlForPost = `http://localhost:8080/cv/${id}/update/title-and-candidate`;
     const [response, setResponse] = useState(null);
 
-    const saveInput = (e, url) => {
-        e.preventDefault();
-        let titleValue = document.getElementById('cv-title').value;
-        let nameValue = document.getElementById('candidate-name').value;
-        let roleValue = document.getElementById('candidate-role').value;
-        const objectToPost = {
-            title: titleValue,
-            candidate: {
-            name: nameValue,
-            role: roleValue,
-            },
-        };
-        // console.log('objectToPost: ', objectToPost);
+    const saveInput = (urlForPost, objectToPost) => {
+        // console.log('incoming urlForPost from CVForm saveInput(): ', urlForPost);
+        // console.log('incoming objectToPost from CVForm saveInput(): ', objectToPost);
         requestHandler.postToSource(urlForPost, objectToPost, setResponse, setErrorHandler);
     }
 
     useEffect(() => {
-        // console.log('*** CVForm useEffect executed ***');
         if (response===null) {
-            // console.log('actual state of response: ', response);
-            // console.log('fecthCV starts here...')
             requestHandler.getFromSource(url, setFetchedCV, setErrorHandler);
             setIsLoading(false)
         } else  {
-            // console.log('Skip fetch and Im gonna set the response to null');
             setResponse(null);
         }
-    }, [response]);
+    },  [response]);
 
     if(isLoading) {
         return(<div>Please wait...</div>);
@@ -66,7 +50,7 @@ function CVForm(props) {
             <div className='cv-container'>
                 <ControlPanel fetchedCV={fetchedCV} saveInput={saveInput}/>
                 <CVHeader fetchedCV={fetchedCV}/>
-                <LeftSidebar fetchedCV = {fetchedCV}/>
+                <LeftSidebar fetchedCV = {fetchedCV} saveInput={saveInput}/>
                 <RightSidebar/>
                 <footer>Footer</footer>
             </div>
