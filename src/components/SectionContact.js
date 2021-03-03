@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import TitleSeparator from '../styled-components/TitleSeparator';
+import envelope from '../images/envelope-solid.png';
+import phone from '../images/phone-alt-solid.png';
+import linkedin from '../images/linkedin-brands.png';
 import '../CVForm.css';
 
 function SectionContact(props) {
@@ -30,9 +33,16 @@ function SectionContact(props) {
                     <button className='submit-button' type='submit'>SUBMIT</button>
                 </div>
                 <TitleSeparator/>
-                <input className='contact' type='email' id='email' name='email' placeholder='example.candidate@gmail.com' defaultValue={email} required></input>
-                <input className='contact' type='text' id='phone' name='phone' placeholder='+36 20 123 45 67' defaultValue={phoneNr} required></input>
-                <input className='contact' type='url' id='linkedin' name='linkedin' placeholder='https://www.linkedin.com/in/ExampleCandidate' defaultValue={linkedInProfile} required></input>
+                <div className='inline-fa'>
+                    <img src={envelope} alt='envelope' height='16'width='16'/>
+                    <input className='contact' type='email' id='email' name='email' placeholder='example.candidate@gmail.com' defaultValue={email} required></input>
+                    
+                    <img src={phone} alt='phone' height='16'width='16'/>
+                    <input className='contact' type='text' id='phone' name='phone' placeholder='+36 20 123 45 67' defaultValue={phoneNr} required></input>
+                    
+                    <img src={linkedin} alt='linkedin' height='17'width='17'/>
+                    <input className='contact' type='url' id='linkedin' name='linkedin' placeholder='https://www.linkedin.com/in/ExampleCandidate' defaultValue={linkedInProfile} required></input>
+                </div>
             </form>
         </div>
     )

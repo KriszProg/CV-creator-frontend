@@ -2,6 +2,9 @@ import React from 'react';
 import { Page, Text, View, Document, StyleSheet, Image, Link, Font } from '@react-pdf/renderer';
 import defaultBackground from '../images/Background_Default.jpg';
 import profilePhoto from '../images/user.png';
+import envelope from '../images/envelope-solid.png';
+import phone from '../images/phone-alt-solid.png';
+import linkedin from '../images/linkedin-brands.png';
 import font from '../font/ArialBold.ttf'
 
 export function PDFDocument(props) {
@@ -67,12 +70,20 @@ export function PDFDocument(props) {
             height: '4cm',
             // border: '1 solid yellow'
         },
-        contactInfo: {
+        contactInfoBox: {
             height: '23mm',
             paddingTop: '4mm',
-            paddingLeft: '6mm',
             lineHeight: 1.8,
             // border: '1 solid black'
+        },
+        contactInfoLine: {
+            display: 'flex',
+            flexDirection: 'row',
+        },
+        faBox: {
+            width: '4mm',
+            height: '4mm',
+            marginRight: '2mm'
         },
         left65: {
             height: '65mm',
@@ -200,10 +211,19 @@ export function PDFDocument(props) {
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitle}>Contact</Text>
                                 <View style={styles.titleSeparator}/>
-                                <View style={styles.contactInfo}>
-                                    <Text style={styles.link}>{email}</Text>
-                                    <Text style={styles.text}>{phoneNr}</Text>
-                                    <Link src={linkedInProfile} style={styles.linkSmaller}>{linkedInProfile}</Link>
+                                <View style={styles.contactInfoBox}>
+                                    <View style={styles.contactInfoLine}>
+                                        <Image style={styles.faBox} src={envelope}/>
+                                        <Text style={styles.link}>{email}</Text>
+                                    </View>
+                                    <View style={styles.contactInfoLine}>
+                                        <Image style={styles.faBox} src={phone}/>
+                                        <Text style={styles.text}>{phoneNr}</Text>
+                                    </View>
+                                    <View style={styles.contactInfoLine}>
+                                        <Image style={styles.faBox} src={linkedin}/>
+                                        <Link src={linkedInProfile} style={styles.linkSmaller}>{linkedInProfile}</Link>
+                                    </View>
                                 </View>
                             </View>
                         </View>

@@ -168,7 +168,7 @@
 
 .sidebar {
   display: grid;
-  grid-template-rows: 130px auto;
+  grid-template-rows: 145px auto;
   background: lightgrey;
   padding: 15px;
 }
@@ -190,7 +190,14 @@
   margin: 4px 0px;
   padding: 0px 5px 0px 5px;
   display: block;
-  width: 100%;
+  width: 95%;
+}
+
+.inline-fa {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #left-sidebar .bottom-section {
