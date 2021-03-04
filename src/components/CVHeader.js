@@ -8,12 +8,12 @@ function CVHeader(props) {
 
     return (
         <div className='grid-box' id="cv-header">
-            <ImgUploader element='background-img'/>
+            <ImgUploader element='background-img' fetchedCV={props.fetchedCV} saveInput={props.saveInput}/>
             <div id='cv-header-candidate'>
                 <h2 id='display-name'>{name}</h2>
                 <h2 id='display-role'>{role}</h2>
             </div>
-            <ImgUploader element='profile-photo'/>
+            <ImgUploader element='profile-photo' fetchedCV={props.fetchedCV} saveInput={props.saveInput}/>
         </div>
     )
 }
