@@ -18,8 +18,8 @@ function CVForm(props) {
     const [response, setResponse] = useState(null);
 
     const saveInput = (urlForPost, objectToPost) => {
-        // console.log('incoming urlForPost from CVForm saveInput(): ', urlForPost);
-        // console.log('incoming objectToPost from CVForm saveInput(): ', objectToPost);
+        console.log('incoming urlForPost from CVForm saveInput(): ', urlForPost);
+        console.log('incoming objectToPost from CVForm saveInput(): ', objectToPost);
         requestHandler.postToSource(urlForPost, objectToPost, setResponse, setErrorHandler);
     }
 
@@ -49,7 +49,7 @@ function CVForm(props) {
         return (
             <div className='cv-container'>
                 <ControlPanel fetchedCV={fetchedCV} saveInput={saveInput}/>
-                <CVHeader fetchedCV={fetchedCV}/>
+                <CVHeader fetchedCV={fetchedCV} saveInput={saveInput}/>
                 <LeftSidebar fetchedCV = {fetchedCV} saveInput={saveInput}/>
                 <RightSidebar/>
                 <footer>Footer</footer>
