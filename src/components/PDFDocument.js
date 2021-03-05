@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page, Text, View, Document, StyleSheet, Image, Link, Font } from '@react-pdf/renderer';
+import { Page, Text, View, Document, StyleSheet, Image, Font } from '@react-pdf/renderer';
 import defaultBackground from '../images/Background_Default.jpg';
 import profilePhoto from '../images/user.png';
 import envelope from '../images/envelope-solid.png';
@@ -9,13 +9,21 @@ import font from '../font/ArialBold.ttf'
 
 export function PDFDocument(props) {
     Font.register({ family: 'ArialBold', src: font});
-
-    const {title} = props.fetchedCV.cvIdentifiers !== null ? props.fetchedCV.cvIdentifiers : '';
+    
+    const backgroundUrl = props.fetchedCV.background !== null ? props.fetchedCV.background.url : defaultBackground;
+    const profilePhotoUrl = props.fetchedCV.profilePhoto !== null ? props.fetchedCV.profilePhoto.url : profilePhoto;
+    
     const {name, role} = props.fetchedCV.candidate !== null ? props.fetchedCV.candidate : '';
     const {email, phoneNr, linkedInProfile} = props.fetchedCV.contact !== null ? props.fetchedCV.contact : '';
-    const {selfDefinition} = props.fetchedCV.selfDefinition !== null ? props.fetchedCV.selfDefinition : '';
-    const {strength} = props.fetchedCV.strength !== null ? props.fetchedCV.strength : '';
-    const {mentorOpinion} = props.fetchedCV.mentorOpinion !== null ? props.fetchedCV.mentorOpinion : '';
+
+    const sectionTitle1 = props.fetchedCV.persInf1 !== null ? props.fetchedCV.persInf1.sectionTitle : 'Section #1';
+    const text1 = props.fetchedCV.persInf1 !== null ? props.fetchedCV.persInf1.text : '';
+    
+    const sectionTitle2 = props.fetchedCV.persInf2 !== null ? props.fetchedCV.persInf2.sectionTitle : 'Section #2';
+    const text2 = props.fetchedCV.persInf2 !== null ? props.fetchedCV.persInf2.text : '';
+    
+    const sectionTitle3 = props.fetchedCV.persInf3 !== null ? props.fetchedCV.persInf3.sectionTitle : 'Section #3';
+    const text3 = props.fetchedCV.persInf3 !== null ? props.fetchedCV.persInf3.text : '';
 
     const styles = StyleSheet.create({
         page: {
@@ -191,7 +199,7 @@ export function PDFDocument(props) {
                 <View style={styles.header}>
                     <Image
                         style={styles.image}
-                        src={defaultBackground}
+                        src={backgroundUrl}
                     />
                     <View style={styles.candidate}>
                         <Text style={styles.name}>{name}</Text>
@@ -200,7 +208,7 @@ export function PDFDocument(props) {
                     <View style={styles.profilePhoto}>
                         <Image
                             style={styles.image}
-                            src={profilePhoto}
+                            src={profilePhotoUrl}
                         /> 
                     </View>
                 </View>
@@ -222,32 +230,32 @@ export function PDFDocument(props) {
                                     </View>
                                     <View style={styles.contactInfoLine}>
                                         <Image style={styles.faBox} src={linkedin}/>
-                                        <Link src={linkedInProfile} style={styles.linkSmaller}>{linkedInProfile}</Link>
+                                        <Text style={styles.linkSmaller}>{linkedInProfile}</Text>
                                     </View>
                                 </View>
                             </View>
                         </View>
                         <View style={styles.left80}>
                             <View style={styles.section}>
-                                <Text style={styles.sectionTitle}>Self Definition</Text>
+                                <Text style={styles.sectionTitle}>{sectionTitle1}</Text>
                                 <View style={styles.titleSeparator}/>
-                                <Text style={styles.text}>{selfDefinition}</Text>
+                                <Text style={styles.text}>{text1}</Text>
                             </View>
                         </View>
 
                         <View style={styles.left65}>
                             <View style={styles.section}>
-                                <Text style={styles.sectionTitle}>Strength</Text>
+                                <Text style={styles.sectionTitle}>{sectionTitle2}</Text>
                                 <View style={styles.titleSeparator}/>
-                                <Text style={styles.text}>{strength}</Text>
+                                <Text style={styles.text}>{text2}</Text>
                             </View>
                         </View>
 
                         <View style={styles.left65}>
                             <View style={styles.section}>
-                                <Text style={styles.sectionTitle}>Mentor Opinion</Text>
+                                <Text style={styles.sectionTitle}>{sectionTitle3}</Text>
                                 <View style={styles.titleSeparator}/>
-                                <Text style={styles.text}>{mentorOpinion}</Text>
+                                <Text style={styles.text}>{text3}</Text>
                             </View>
                         </View>
                     </View>
@@ -273,7 +281,7 @@ export function PDFDocument(props) {
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitle}>Recent Projects</Text>
                                 <View style={styles.titleSeparator}/>
-                                <Text style={styles.text}>{selfDefinition}</Text>
+                                <Text style={styles.text}>{text1}</Text>
                             </View>
                         </View>
                         
@@ -281,7 +289,7 @@ export function PDFDocument(props) {
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitle}>Work Experience</Text>
                                 <View style={styles.titleSeparator}/>
-                                <Text style={styles.text}>{selfDefinition}</Text>
+                                <Text style={styles.text}>{text1}</Text>
                             </View>
                         </View>
 
@@ -289,7 +297,7 @@ export function PDFDocument(props) {
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitle}>Educations</Text>
                                 <View style={styles.titleSeparator}/>
-                                <Text style={styles.text}>{selfDefinition}</Text>
+                                <Text style={styles.text}>{text1}</Text>
                             </View>
                         </View>
 
@@ -297,7 +305,7 @@ export function PDFDocument(props) {
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitle}>Spoken Languages</Text>
                                 <View style={styles.titleSeparator}/>
-                                <Text style={styles.text}>{mentorOpinion}</Text>
+                                <Text style={styles.text}>{text3}</Text>
                             </View>
                         </View>
                     </View>

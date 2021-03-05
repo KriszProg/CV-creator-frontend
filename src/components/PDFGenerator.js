@@ -3,6 +3,8 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 import { PDFDocument} from './PDFDocument';
 
 export default function PDFGenerator(props) {
+    const name = props.fetchedCV.candidate !== null ? props.fetchedCV.candidate.name.replace(/ /g, '_') : 'Firstname_LastName';
+    
     const getCurrentDateTime = () => {
         let currentDate = new Date();
         
@@ -28,8 +30,7 @@ export default function PDFGenerator(props) {
     return (
         <PDFDownloadLink
             document={<PDFDocument fetchedCV={props.fetchedCV}/>} 
-            // fileName='example.pdf'
-            fileName={`example_${getCurrentDateTime()}.pdf`}
+            fileName={`CV_${name}_${getCurrentDateTime()}.pdf`}
             style={pdfButton}
         >
             {/* {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')} */}

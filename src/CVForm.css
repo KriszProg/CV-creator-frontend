@@ -32,7 +32,6 @@
 #control-panel-left-box {
   grid-column: 1/4;
   display: flex;
-  font-size: 25px;
   font-weight: bold;
   padding: 10px 30px 10px 0px;
 }
@@ -71,23 +70,30 @@
 #cv-title-label {
   margin-left: 20px;
   margin-right: 15px;
+  font-size: 25px;
   color: black;
 }
 
-.title {
+.editable-title {
+  font-family: Arial, Helvetica, sans-seriff;
   resize: none;
   width: 80%;
   border: 3px solid transparent;
-  font-size: 25px;
+  font-size: 1.5em;
   font-weight: bold;
   background: none;
-  color: darkblue;
 }
 
-#control-panel-left-box textarea:hover {
+.editable-title:hover {
   cursor: pointer;
   border: 3px solid darkblue;
   border-radius: 4px;
+  color: darkblue;
+}
+
+.cv-title {
+  width: 100%;
+  color: darkblue;
 }
 
 #cv-header {

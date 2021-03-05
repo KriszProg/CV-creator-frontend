@@ -5,42 +5,29 @@ import '../CVForm.css';
 function SectionSingleData(props) {
     const CVId = props.CVId;
     const saveInput = props.saveInput;
-    const sectionTitle = props.sectionTitle !== null ? props.sectionTitle : '';
-    const object = props.object !== null ? props.object : '';
 
-    const [URLEndpoint, setURLEndpoint] = useState(null);
-    const [objectKey, setObjectKey] = useState(null);
+    const sectionId = props.sectionId;
+    const sectionTitleFieldId = `section-title${sectionId}`;
+    const placeHolder = `Section #${sectionId}`;
+    const personalInfoType = `PERS_INF_${sectionId}`;
+    const inputFieldId = `personal-info${sectionId}`;
+    
+    const sectionTitle = props.personalInfo !== null ? props.personalInfo.sectionTitle : '';
+    const text = props.personalInfo !== null ? props.personalInfo.text : '';
 
-    const urlForPost = `http://localhost:8080/cv/${CVId}/update/${URLEndpoint}`;
-
-    useEffect(() => {
-        // console.log('*** useEffect executed from:', sectionTitle);
-        setupPropertiesForPost();
-    }, [])
-
-    const setupPropertiesForPost = () => {
-        switch(sectionTitle) {
-            case 'Self Definition':
-                setURLEndpoint('self-definition');
-                setObjectKey('selfDefinition');
-                break;
-            case 'Strength':
-                setURLEndpoint('strength');
-                setObjectKey('strength');
-                break;
-            case 'Mentor Opinion' :
-                setURLEndpoint('mentor-opinion');
-                setObjectKey('mentorOpinion');
-                break;
-        }
-    }
+    const urlForPost = `http://localhost:8080/cv/${CVId}/update/personal-info`;
 
     const prepareAndSave = (e) => {
         e.preventDefault();
-        let inputText = document.getElementById(URLEndpoint).value;
+        let sectionTitleValue = document.getElementById(sectionTitleFieldId).value;
+        let inputValue = document.getElementById(inputFieldId).value;
+        
         const objectToPost = {
-            [objectKey]: inputText
+            personalInfoType: personalInfoType,
+            sectionTitle: sectionTitleValue,
+            text: inputValue
         };
+        
         saveInput(urlForPost, objectToPost);
     }
 
@@ -48,11 +35,11 @@ function SectionSingleData(props) {
         <div className='section'> 
             <form onSubmit={prepareAndSave}>
             <div className="inline-button">
-                <h2>{sectionTitle}</h2>
+                <input className='editable-title' type='text' id={sectionTitleFieldId} name='cv-title' placeholder={placeHolder} defaultValue={sectionTitle} required></input>
                 <button className='submit-button' type='submit'>SUBMIT</button>
             </div>
                 <TitleSeparator/>
-                <textarea className='textarea input-field' id={URLEndpoint} name='input-field' rows='12' maxLength='780' defaultValue={object}></textarea>
+                <textarea className='textarea input-field' id={inputFieldId} name='input-field' rows='12' maxLength='780' defaultValue={text} required></textarea>
             </form>
         </div>
     )

@@ -6,17 +6,17 @@ import '../CVForm.css';
 function LeftSidebar(props) {
     const id = props.fetchedCV.cvIdentifiers.id;
     const saveInput = props.saveInput;
-    const {selfDefinition} = props.fetchedCV.selfDefinition !== null ? props.fetchedCV.selfDefinition : '';
-    const {strength} = props.fetchedCV.strength !== null ? props.fetchedCV.strength : '';
-    const {mentorOpinion} = props.fetchedCV.mentorOpinion !== null ? props.fetchedCV.mentorOpinion : '';
+    const persInf1 = props.fetchedCV.persInf1;
+    const persInf2 = props.fetchedCV.persInf2;
+    const persInf3 = props.fetchedCV.persInf3;
 
     return (
         <div className='sidebar' id='left-sidebar'>
             <SectionContact CVId={id} contact={props.fetchedCV.contact} saveInput={props.saveInput} />
             <div className="bottom-section">
-                <SectionSingleData CVId={id} sectionTitle='Self Definition' object={selfDefinition} saveInput={saveInput} />
-                <SectionSingleData CVId={id} sectionTitle='Strength' object={strength} saveInput={saveInput} />
-                <SectionSingleData CVId={id} sectionTitle='Mentor Opinion' object={mentorOpinion} saveInput={saveInput} />
+                <SectionSingleData CVId={id} sectionId={1} personalInfo={persInf1} saveInput={saveInput} />
+                <SectionSingleData CVId={id} sectionId={2} personalInfo={persInf2} saveInput={saveInput} />
+                <SectionSingleData CVId={id} sectionId={3} personalInfo={persInf3} saveInput={saveInput} />
             </div>
         </div>
     )

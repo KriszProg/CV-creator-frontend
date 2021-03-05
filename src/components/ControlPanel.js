@@ -29,7 +29,7 @@ function ControlPanel(props) {
             <form id='control-panel-form' onSubmit={prepareAndSave}>
                 <div id='control-panel-left-box'>
                     <label htmlFor='cv-title' id='cv-title-label'>Title: </label>
-                    <textarea className='textarea title' id='cv-title' name='cv-title' rows='1' max-rows='1' maxLength='25' defaultValue={title}></textarea>
+                    <input className='editable-title cv-title' id='cv-title' name='cv-title' defaultValue={title}></input>
                 </div>
                 <div id='control-panel-right-box'>
                     <label htmlFor='candidate-name' id='candidate-name-label'>Name: </label>
