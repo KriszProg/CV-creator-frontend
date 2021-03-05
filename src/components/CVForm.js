@@ -18,8 +18,8 @@ function CVForm(props) {
     const [response, setResponse] = useState(null);
 
     const saveInput = (urlForPost, objectToPost) => {
-        console.log('incoming urlForPost from CVForm saveInput(): ', urlForPost);
-        console.log('incoming objectToPost from CVForm saveInput(): ', objectToPost);
+        // console.log('incoming urlForPost from CVForm saveInput(): ', urlForPost);
+        // console.log('incoming objectToPost from CVForm saveInput(): ', objectToPost);
         requestHandler.postToSource(urlForPost, objectToPost, setResponse, setErrorHandler);
     }
 
