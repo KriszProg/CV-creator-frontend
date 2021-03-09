@@ -25,6 +25,9 @@ export function PDFDocument(props) {
     const sectionTitle3 = props.fetchedCV.persInf3 !== null ? props.fetchedCV.persInf3.sectionTitle : 'Section #3';
     const text3 = props.fetchedCV.persInf3 !== null ? props.fetchedCV.persInf3.text : '';
 
+    const projectList = props.fetchedCV.projectList;
+    console.log('projectList from PDFDocument: ', projectList);
+
     const styles = StyleSheet.create({
         page: {
             //any format to here if necessary
@@ -117,13 +120,22 @@ export function PDFDocument(props) {
             height: '4cm',
             // border: '1 solid yellow'
         },
-        right70: {
-            height: '70mm',
+        right60: {
+            height: '60mm',
             // border: '1 solid red'
         },
-        right80: {
-            height: '80mm',
+        right90: {
+            height: '90mm',
             // border: '1 solid red'
+        },
+        project: {
+            marginBottom: '3mm'
+        },
+        projectTitle: {
+            fontSize: 8,
+            fontFamily: 'ArialBold',
+            textTransform: 'uppercase',
+            marginBottom: '1mm'
         },
         section: {
             marginTop: '5mm',
@@ -277,11 +289,22 @@ export function PDFDocument(props) {
                             </View>
                         </View>
                         
-                        <View style={styles.right80}>
+                        <View style={styles.right90}>
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitle}>Recent Projects</Text>
                                 <View style={styles.titleSeparator}/>
-                                <Text style={styles.text}>{text1}</Text>
+                                {projectList.length > 0 &&
+                                projectList.map((project, index) => {
+                                    return (
+                                    <View key={index} style={styles.project}>
+                                        <Text style={styles.projectTitle}>{project.title}</Text>
+                                        <Text style={styles.linkSmaller}>{project.url1}</Text>
+                                        <Text style={styles.linkSmaller}>{project.url2}</Text>
+                                        <Text style={styles.text}>{project.description}</Text>
+                                    </View>
+                                    )
+                                })
+                                }
                             </View>
                         </View>
                         
@@ -293,7 +316,7 @@ export function PDFDocument(props) {
                             </View>
                         </View>
 
-                        <View style={styles.right70}>
+                        <View style={styles.right60}>
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitle}>Educations</Text>
                                 <View style={styles.titleSeparator}/>
