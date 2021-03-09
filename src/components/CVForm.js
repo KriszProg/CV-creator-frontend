@@ -51,7 +51,7 @@ function CVForm(props) {
                 <ControlPanel fetchedCV={fetchedCV} saveInput={saveInput}/>
                 <CVHeader fetchedCV={fetchedCV} saveInput={saveInput}/>
                 <LeftSidebar fetchedCV = {fetchedCV} saveInput={saveInput}/>
-                <RightSidebar/>
+                <RightSidebar fetchedCV = {fetchedCV} saveInput={saveInput}/>
                 <footer>Footer</footer>
             </div>
         )

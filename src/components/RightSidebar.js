@@ -1,8 +1,16 @@
 import React from 'react';
 import TitleSeparator from '../styled-components/TitleSeparator';
 import '../CVForm.css';
+import SectionProjects from './SectionProjects';
 
-function RightSidebar() {
+function RightSidebar(props) {
+    const id = props.fetchedCV.cvIdentifiers.id;
+    const saveInput = props.saveInput;
+    // console.log('props.fetchedCV.projectList from RightSidebar: ', props.fetchedCV.projectList);
+    // console.log('boolean: ', props.fetchedCV.projectList.length === 0);
+    const projectList = props.fetchedCV !== null ? props.fetchedCV.projectList : [];
+    // console.log('projectListTest from RightSidebar: ',projectList);
+
     return (
         <div className='sidebar' id='right-sidebar'>
                 <div className='section'>
@@ -12,13 +20,7 @@ function RightSidebar() {
                     </div>
                 </div>
                 <div className='bottom-section'>
-                    <div className='section' id='recent-projects'>
-                        <h2>Recent Projects</h2>
-                        <TitleSeparator/>
-                        <textarea className='textarea' id='project1' name='project1'></textarea>
-                        <textarea className='textarea' id='project2' name='project2'></textarea>
-                        <textarea className='textarea' id='project3' name='project3'></textarea>
-                    </div>
+                    <SectionProjects CVId={id} projectList={projectList} saveInput={props.saveInput}/>
                     <div className='section' id='work-experience'>
                         <h2>Work Experience</h2>
                         <TitleSeparator/>

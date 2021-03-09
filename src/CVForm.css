@@ -224,6 +224,47 @@
   height: auto;
 }
 
+.projects {
+  list-style: none;
+}
+
+.add-button {
+  padding: 5px;
+  margin-left: 35px;
+}
+
+.delete-icon {
+  margin-right: 5px;
+}
+
+.dropable-card {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 8px;
+}
+
+.dropable-card:hover {
+  cursor: pointer;
+  background: plum;
+  border: 1px solid purple;
+}
+
+.project-main {
+  margin-bottom: 5px;
+}
+
+.project-title {
+  width: 50%;
+  padding-left: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.project-url {
+  width: 50%;
+  padding-left: 2px;
+}
+
 #work-experience {
   height: auto;
 }
