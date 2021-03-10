@@ -2,6 +2,7 @@ import React from 'react';
 import TitleSeparator from '../styled-components/TitleSeparator';
 import SectionProjects from './SectionProjects';
 import SectionWorkExperience from './SectionWorkExperience';
+import SectionEducation from './SectionEducation';
 import '../CVForm.css';
 
 function RightSidebar(props) {
@@ -9,6 +10,7 @@ function RightSidebar(props) {
     const saveInput = props.saveInput;
     const projectList = props.fetchedCV !== null ? props.fetchedCV.projectList : [];
     const jobList = props.fetchedCV !== null ? props.fetchedCV.jobList : [];
+    const qualificationList = props.fetchedCV !== null ? props.fetchedCV.qualificationList : [];
 
     return (
         <div className='sidebar' id='right-sidebar'>
@@ -21,15 +23,7 @@ function RightSidebar(props) {
                 <div className='bottom-section'>
                     <SectionProjects CVId={id} projectList={projectList} saveInput={props.saveInput}/>
                     <SectionWorkExperience CVId={id} jobList={jobList} saveInput={props.saveInput}/>
-                    <div className='section' id='educations'>
-                        <h2>Educations</h2>
-                        <TitleSeparator/>
-                        <textarea className='textarea' id='education1' name='education1'></textarea>
-                        <textarea className='textarea' id='education2' name='education2'></textarea>
-                        <textarea className='textarea' id='education3' name='education3'></textarea>
-                        <textarea className='textarea' id='education4' name='education4'></textarea>
-                        <textarea className='textarea' id='education5' name='education5'></textarea>
-                    </div>
+                    <SectionEducation CVId={id} qualificationList={qualificationList} saveInput={props.saveInput}/>
                     <div className='section' id='spoken-languages'>
                         <h2>Spoken Languages</h2>
                         <TitleSeparator/>
