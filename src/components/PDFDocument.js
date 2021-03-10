@@ -26,8 +26,8 @@ export function PDFDocument(props) {
     const text3 = props.fetchedCV.persInf3 !== null ? props.fetchedCV.persInf3.text : '';
 
     const projectList = props.fetchedCV.projectList;
-
     const jobList = props.fetchedCV.jobList;
+    const qualificationList = props.fetchedCV.qualificationList;
 
     const styles = StyleSheet.create({
         page: {
@@ -78,13 +78,13 @@ export function PDFDocument(props) {
             flexGrow: 1,
             // border: '1 solid blue'
         },
-        left40: {
-            height: '4cm',
+        left35: {
+            height: '35mm',
             // border: '1 solid yellow'
         },
         contactInfoBox: {
-            height: '23mm',
-            paddingTop: '4mm',
+            height: '20mm',
+            paddingTop: '3mm',
             lineHeight: 1.8,
             // border: '1 solid black'
         },
@@ -113,16 +113,16 @@ export function PDFDocument(props) {
             flexGrow: 1,
             // border: '1 solid blue'
         },
-        // right35: {
-        //     height: '35mm',
-        //     border: '1 solid red'
-        // },
-        right40: {
-            height: '4cm',
+        right35: {
+            height: '35mm',
             // border: '1 solid yellow'
         },
-        right50: {
-            height: '50mm',
+        right40: {
+            height: '4cm',
+            // border: '1 solid red'
+        },
+        right55: {
+            height: '55mm',
             // border: '1 solid red'
         },
         right90: {
@@ -138,14 +138,12 @@ export function PDFDocument(props) {
             textTransform: 'uppercase',
             marginBottom: '1mm'
         },
-        jobRole: {
+        infoLineBold: {
             fontSize: 9,
             fontFamily: 'ArialBold',
-            // textTransform: 'uppercase',
-            // marginBottom: '1mm'
         },
         section: {
-            marginTop: '4mm',
+            marginTop: '3mm',
             textAlign: 'justify'
         },
         sectionRightAlign: {
@@ -184,7 +182,7 @@ export function PDFDocument(props) {
             display: 'flex',
             flexDirection: 'row',
             alignSelf: 'flex-end',
-            height: '23mm',
+            height: '20mm',
             // border: '1 solid black',
         },
         icon: {
@@ -193,14 +191,14 @@ export function PDFDocument(props) {
             border: '1 solid grey',
             borderRadius: 2,
             marginHorizontal: '1mm',
-            marginVertical: '5mm',
+            marginVertical: '4mm',
             padding: 3,
             textAlign: 'center'
         },
         text: {
             fontSize: 9,
         },
-        infoLine: {
+        infoLineNormal: {
             fontSize: 9,
             marginBottom: '1mm'
         },
@@ -238,7 +236,7 @@ export function PDFDocument(props) {
 
                 <View style={styles.CVbody}>
                     <View style={styles.leftPanel}>
-                        <View style={styles.left40}>
+                        <View style={styles.left35}>
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitle}>Contact</Text>
                                 <View style={styles.titleSeparator}/>
@@ -284,7 +282,7 @@ export function PDFDocument(props) {
                     </View>
 
                     <View style={styles.rightPanel}>
-                        <View style={styles.right40}>
+                        <View style={styles.right35}>
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitleRightAlign}>Hard Skills</Text>
                                 <View style={styles.titleSeparatorRightAlign}/>
@@ -323,16 +321,11 @@ export function PDFDocument(props) {
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitle}>Work Experience</Text>
                                 <View style={styles.titleSeparator}/>
-                                {/* <Text style={styles.text}>{text1}</Text> */}
                                 {jobList.map((job, index) => {
                                     return(
                                     <View key={index}>
-                                        {/* <Text style={styles.text}>
-                                            <Text style={styles.jobRole}>{job.role} </Text>
-                                            ({job.yearFrom} - {job.yearTo}) - {job.company}
-                                        </Text> */}
-                                        <Text style={styles.jobRole}>{job.role}</Text>
-                                        <Text style={styles.infoLine}>({job.yearFrom} - {job.yearTo}) - {job.company}</Text>
+                                        <Text style={styles.infoLineBold}>{job.role}</Text>
+                                        <Text style={styles.infoLineNormal}>({job.yearFrom} - {job.yearTo}) - {job.company}</Text>
                                     </View>  
                                     )
                                 })
@@ -340,11 +333,19 @@ export function PDFDocument(props) {
                             </View>
                         </View>
 
-                        <View style={styles.right50}>
+                        <View style={styles.right55}>
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitle}>Educations</Text>
                                 <View style={styles.titleSeparator}/>
-                                <Text style={styles.text}>{text1}</Text>
+                                {qualificationList.map((qua, index) => {
+                                    return(
+                                    <View key={index}>
+                                        <Text style={styles.infoLineBold}>{qua.name} ({qua.degree})</Text>
+                                        <Text style={styles.infoLineNormal}>({qua.yearFrom} - {qua.yearTo}) - {qua.school} ({qua.cityOfSchool})</Text>
+                                    </View>  
+                                    )
+                                })
+                                }
                             </View>
                         </View>
 
