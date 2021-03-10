@@ -69,7 +69,7 @@ function SectionProjects(props) {
         <div className='section' id='recent-projects'>
             <form onSubmit={prepareAndSave}>
                 <div className="inline-button">
-                    <input className='editable-title' type='text' id={'sectionTitleFieldId'} name='cv-title' placeholder={'placeHolder'} defaultValue="Recent Projects" required></input>
+                    <input className='editable-title' type='text' id='title-recent-projects' name='cv-title' placeholder={'placeHolder'} defaultValue="Recent Projects" required></input>
                     {projectList.length < 3  &&
                         <button type='button' className='add-button' onClick={addNewProject}>ADD</button>
                     }
@@ -87,15 +87,19 @@ function SectionProjects(props) {
                                         {(provided) => (
                                             <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                 <div className='dropable-card'>
-                                                    <div className='inline-fa'>
-                                                    <input type='text' className='project-title' id={`project-title${index}`} name={`project-title${index}`} placeholder='Enter your project name...' defaultValue={title} required></input>
-                                                    <img className='delete-icon' id={`delete${index}`} src={deleteIcon} alt='delete' height='16'width='16' onClick={deleteProject}/>
+                                                    <div className='card-top'>
+                                                        <input type='text' className='project-title' id={`project-title${index}`} name={`project-title${index}`} placeholder='Enter your project name...' defaultValue={title} required></input>
                                                     </div>
-                                                    <div className='project-main'>
+                                                    <div className='card-top-right'>
+                                                        <img className='delete-icon' id={`delete${index}`} src={deleteIcon} alt='delete' onClick={deleteProject}/>
+                                                    </div>
+                                                    <div className='card-middle'>
                                                         <input type='url' className='project-url'  id={`project-url1${index}`} name={`project-url1${index}`} placeholder='e.g.: https://github.com/UserName/Project-name' defaultValue={url1}></input>
                                                         <input type='url' className='project-url'  id={`project-url2${index}`} name={`project-url2${index}`} placeholder='e.g.: https://github.com/UserName/Project-name' defaultValue={url2}></input>
                                                     </div>
-                                                    <textarea className='textarea input-field' id={`project-description${index}`} name={`project-description${index}`} rows='3' placeholder='Enter short description of your project...' defaultValue={description} required></textarea>
+                                                    <div className='card-bottom'>
+                                                        <textarea className='textarea input-field' id={`project-description${index}`} name={`project-description${index}`} rows='3' placeholder='Enter short description of your project...' defaultValue={description} required></textarea>
+                                                    </div>
                                                 </div>
                                             </li>
                                         )}

@@ -26,7 +26,8 @@ export function PDFDocument(props) {
     const text3 = props.fetchedCV.persInf3 !== null ? props.fetchedCV.persInf3.text : '';
 
     const projectList = props.fetchedCV.projectList;
-    console.log('projectList from PDFDocument: ', projectList);
+
+    const jobList = props.fetchedCV.jobList;
 
     const styles = StyleSheet.create({
         page: {
@@ -112,23 +113,23 @@ export function PDFDocument(props) {
             flexGrow: 1,
             // border: '1 solid blue'
         },
-        right30: {
-            height: '30mm',
-            // border: '1 solid red'
-        },
+        // right35: {
+        //     height: '35mm',
+        //     border: '1 solid red'
+        // },
         right40: {
             height: '4cm',
             // border: '1 solid yellow'
         },
-        right60: {
-            height: '60mm',
+        right50: {
+            height: '50mm',
             // border: '1 solid red'
         },
         right90: {
             height: '90mm',
             // border: '1 solid red'
         },
-        project: {
+        card: {
             marginBottom: '3mm'
         },
         projectTitle: {
@@ -137,12 +138,18 @@ export function PDFDocument(props) {
             textTransform: 'uppercase',
             marginBottom: '1mm'
         },
+        jobRole: {
+            fontSize: 9,
+            fontFamily: 'ArialBold',
+            // textTransform: 'uppercase',
+            // marginBottom: '1mm'
+        },
         section: {
-            marginTop: '5mm',
+            marginTop: '4mm',
             textAlign: 'justify'
         },
         sectionRightAlign: {
-            marginTop: '5mm',
+            marginTop: '4mm',
             textAlign: 'right'
         },
         sectionTitle: {
@@ -192,6 +199,10 @@ export function PDFDocument(props) {
         },
         text: {
             fontSize: 9,
+        },
+        infoLine: {
+            fontSize: 9,
+            marginBottom: '1mm'
         },
         link: {
             fontSize: 9,
@@ -296,10 +307,10 @@ export function PDFDocument(props) {
                                 {projectList.length > 0 &&
                                 projectList.map((project, index) => {
                                     return (
-                                    <View key={index} style={styles.project}>
+                                    <View key={index} style={styles.card}>
                                         <Text style={styles.projectTitle}>{project.title}</Text>
-                                        <Text style={styles.linkSmaller}>{project.url1}</Text>
-                                        <Text style={styles.linkSmaller}>{project.url2}</Text>
+                                        <Text style={styles.link}>{project.url1}</Text>
+                                        <Text style={styles.link}>{project.url2}</Text>
                                         <Text style={styles.text}>{project.description}</Text>
                                     </View>
                                     )
@@ -308,15 +319,28 @@ export function PDFDocument(props) {
                             </View>
                         </View>
                         
-                        <View style={styles.right30}>
+                        <View style={styles.right40}>
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitle}>Work Experience</Text>
                                 <View style={styles.titleSeparator}/>
-                                <Text style={styles.text}>{text1}</Text>
+                                {/* <Text style={styles.text}>{text1}</Text> */}
+                                {jobList.map((job, index) => {
+                                    return(
+                                    <View key={index}>
+                                        {/* <Text style={styles.text}>
+                                            <Text style={styles.jobRole}>{job.role} </Text>
+                                            ({job.yearFrom} - {job.yearTo}) - {job.company}
+                                        </Text> */}
+                                        <Text style={styles.jobRole}>{job.role}</Text>
+                                        <Text style={styles.infoLine}>({job.yearFrom} - {job.yearTo}) - {job.company}</Text>
+                                    </View>  
+                                    )
+                                })
+                                }
                             </View>
                         </View>
 
-                        <View style={styles.right60}>
+                        <View style={styles.right50}>
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitle}>Educations</Text>
                                 <View style={styles.titleSeparator}/>
