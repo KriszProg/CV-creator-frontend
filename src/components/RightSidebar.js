@@ -1,15 +1,14 @@
 import React from 'react';
 import TitleSeparator from '../styled-components/TitleSeparator';
-import '../CVForm.css';
 import SectionProjects from './SectionProjects';
+import SectionWorkExperience from './SectionWorkExperience';
+import '../CVForm.css';
 
 function RightSidebar(props) {
     const id = props.fetchedCV.cvIdentifiers.id;
     const saveInput = props.saveInput;
-    // console.log('props.fetchedCV.projectList from RightSidebar: ', props.fetchedCV.projectList);
-    // console.log('boolean: ', props.fetchedCV.projectList.length === 0);
     const projectList = props.fetchedCV !== null ? props.fetchedCV.projectList : [];
-    // console.log('projectListTest from RightSidebar: ',projectList);
+    const jobList = props.fetchedCV !== null ? props.fetchedCV.jobList : [];
 
     return (
         <div className='sidebar' id='right-sidebar'>
@@ -21,13 +20,7 @@ function RightSidebar(props) {
                 </div>
                 <div className='bottom-section'>
                     <SectionProjects CVId={id} projectList={projectList} saveInput={props.saveInput}/>
-                    <div className='section' id='work-experience'>
-                        <h2>Work Experience</h2>
-                        <TitleSeparator/>
-                        <textarea className='textarea' id='workplace1' name='workplace1'></textarea>
-                        <textarea className='textarea' id='workplace2' name='workplace2'></textarea>
-                        <textarea className='textarea' id='workplace3' name='workplace3'></textarea>
-                    </div>
+                    <SectionWorkExperience CVId={id} jobList={jobList} saveInput={props.saveInput}/>
                     <div className='section' id='educations'>
                         <h2>Educations</h2>
                         <TitleSeparator/>

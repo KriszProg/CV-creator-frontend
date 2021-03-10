@@ -224,7 +224,8 @@
   height: auto;
 }
 
-.projects {
+.projects,
+.jobs {
   list-style: none;
 }
 
@@ -234,23 +235,59 @@
 }
 
 .delete-icon {
-  margin-right: 5px;
+  margin-right: 10px;
+  height: 20px;
+  width: 20px;
+}
+
+.delete-icon:hover {
+  grid-row: 1/1;
+  cursor: pointer;
 }
 
 .dropable-card {
+  display: grid;
+  grid-template-columns: 0.2fr repeat(8, 1fr) 0.2fr;
+  column-gap: 0.5rem;
   padding-top: 5px;
   padding-bottom: 5px;
   margin-bottom: 8px;
 }
 
 .dropable-card:hover {
-  cursor: pointer;
+  cursor: grabbing;
   background: plum;
   border: 1px solid purple;
 }
 
-.project-main {
+.card-top {
+  grid-row: 1/1;
+  grid-column: 2/10;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-top-left {
+  grid-row: 1/1;
+  grid-column: 1/2;
+}
+
+.card-top-right {
+  grid-row: 1/1;
+  grid-column: 10/11;
+}
+
+.card-middle {
+  grid-row: 2/2;
+  grid-column: 2/10;
+  display: flex;
+  /* justify-content: space-between; */
   margin-bottom: 5px;
+}
+
+.card-bottom {
+  grid-row: 3/3;
+  grid-column: 2/10;
 }
 
 .project-title {
@@ -263,10 +300,30 @@
 .project-url {
   width: 50%;
   padding-left: 2px;
+  line-height: 1.4;
 }
 
 #work-experience {
   height: auto;
+}
+
+.job-role {
+  width: 70%;
+  padding-left: 2px;
+  font-weight: bold;
+}
+
+.year {
+  width: 10%;
+  padding-left: 2px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.company {
+  width: 50%;
+  padding-left: 2px;
+  line-height: 1.4;
 }
 
 #educations {
