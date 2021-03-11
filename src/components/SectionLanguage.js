@@ -47,7 +47,6 @@ function SectionLanguage(props) {
 
     const prepareAndSave = (e) => {
         e.preventDefault();
-        console.log('prepareAndSave function starts execute...');
         let objectToPost = [];
         const items = Array.from(languageList);
         
@@ -61,10 +60,10 @@ function SectionLanguage(props) {
     }
 
     return (
-        <div className='section' id='spoken-languages'>
+        <div className='section'>
             <form onSubmit={prepareAndSave}>
                 <div className="inline-button">
-                    <input className='editable-title' type='text' id='title-languages' name='cv-title' placeholder={'placeHolder'} defaultValue="Spoken Languages" required></input>
+                    <h2 className='section-title'>Spoken Languages</h2>
                     {languageList.length < 2  &&
                         <button type='button' className='add-button' onClick={addNewLanguage}>ADD</button>
                     }
@@ -86,8 +85,8 @@ function SectionLanguage(props) {
                                                         <img className='delete-icon' id={`delete${index}`} src={deleteIcon} alt='delete' onClick={deleteLanguage}/>
                                                     </div>
                                                     <div className='card-top'>
-                                                        <input type='text' className='content-bold w20' id={`lang-language${index}`} name={`lang-language${index}`} placeholder='eg: English' defaultValue={language} required></input>
-                                                        <input type='text' className='content-normal w20' id={`lang-level${index}`} name={`lang-level${index}`} placeholder='eg: Intermediate' defaultValue={level} required></input>
+                                                        <input type='text' className='content-bold w20' id={`lang-language${index}`} placeholder='eg: English' defaultValue={language} required></input>
+                                                        <input type='text' className='content-normal w20' id={`lang-level${index}`} placeholder='eg: Intermediate' defaultValue={level} required></input>
                                                     </div>
                                                 </div>
                                             </li>

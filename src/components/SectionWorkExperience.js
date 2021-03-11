@@ -49,7 +49,6 @@ function SectionWorkExperience(props) {
 
     const prepareAndSave = (e) => {
         e.preventDefault();
-        console.log('prepareAndSave function starts execute...');
         let objectToPost = [];
         const items = Array.from(jobList);
         
@@ -61,15 +60,14 @@ function SectionWorkExperience(props) {
                 company: document.getElementById(`job-company${index}`).value,
             })
         })
-        console.log('objectToPost from WorkExperience: ', objectToPost);
         saveInput(urlForPost, objectToPost);
     }
 
     return (
-        <div className='section' id='work-experience'>
+        <div className='section'>
             <form onSubmit={prepareAndSave}>
                 <div className="inline-button">
-                    <input className='editable-title' type='text' id='title-work-experience' name='cv-title' placeholder={'placeHolder'} defaultValue="Work Experience" required></input>
+                    <h2 className='section-title'>Work Experience</h2>
                     {jobList.length < 3  &&
                         <button type='button' className='add-button' onClick={addNewJob}>ADD</button>
                     }
@@ -91,12 +89,12 @@ function SectionWorkExperience(props) {
                                                         <img className='delete-icon' id={`delete${index}`} src={deleteIcon} alt='delete' onClick={deleteJob}/>
                                                     </div>
                                                     <div className='card-top'>
-                                                        <input type='text' className='job-role' id={`job-role${index}`} name={`job-role${index}`} placeholder='Enter name of job role...' defaultValue={role} required></input>
+                                                        <input type='text' className='content-bold w70' id={`job-role${index}`} placeholder='Enter name of job role...' defaultValue={role} required></input>
                                                     </div>
                                                     <div className='card-middle'>
-                                                        <input type='number' className='year' id={`job-year-from${index}`} name={`job-name-from${index}`} min='1990' max='2099' placeholder='e.g.: 1990' defaultValue={yearFrom} required></input>
-                                                        <input type='number' className='year' id={`job-year-to${index}`} name={`job-name-to${index}`} min='1990' max='2099'placeholder='e.g.: 1992' defaultValue={yearTo} required></input>
-                                                        <input type='text' className='company' id={`job-company${index}`} name={`job-company${index}`} placeholder='Enter name of company you worked for...' defaultValue={company} required></input>
+                                                        <input type='number' className='content-normal w10-centered' id={`job-year-from${index}`} min='1990' max='2099' placeholder='eg: 1990' defaultValue={yearFrom} required></input>
+                                                        <input type='number' className='content-normal w10-centered' id={`job-year-to${index}`} min='1990' max='2099'placeholder='eg: 1992' defaultValue={yearTo} required></input>
+                                                        <input type='text' className='content-normal w50' id={`job-company${index}`} placeholder='Enter name of company you worked for...' defaultValue={company} required></input>
                                                     </div>
                                                 </div>
                                             </li>
