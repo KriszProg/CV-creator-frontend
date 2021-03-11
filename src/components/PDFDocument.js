@@ -16,15 +16,7 @@ export function PDFDocument(props) {
     const {name, role} = props.fetchedCV.candidate !== null ? props.fetchedCV.candidate : '';
     const {email, phoneNr, linkedInProfile} = props.fetchedCV.contact !== null ? props.fetchedCV.contact : '';
 
-    const sectionTitle1 = props.fetchedCV.persInf1 !== null ? props.fetchedCV.persInf1.sectionTitle : 'Section #1';
-    const text1 = props.fetchedCV.persInf1 !== null ? props.fetchedCV.persInf1.text : '';
-    
-    const sectionTitle2 = props.fetchedCV.persInf2 !== null ? props.fetchedCV.persInf2.sectionTitle : 'Section #2';
-    const text2 = props.fetchedCV.persInf2 !== null ? props.fetchedCV.persInf2.text : '';
-    
-    const sectionTitle3 = props.fetchedCV.persInf3 !== null ? props.fetchedCV.persInf3.sectionTitle : 'Section #3';
-    const text3 = props.fetchedCV.persInf3 !== null ? props.fetchedCV.persInf3.text : '';
-
+    const personalInfoList = props.fetchedCV.personalInfoList;
     const projectList = props.fetchedCV.projectList;
     const jobList = props.fetchedCV.jobList;
     const qualificationList = props.fetchedCV.qualificationList;
@@ -260,29 +252,20 @@ export function PDFDocument(props) {
                                 </View>
                             </View>
                         </View>
-                        <View style={styles.left85}>
-                            <View style={styles.section}>
-                                <Text style={styles.sectionTitle}>{sectionTitle1}</Text>
-                                <View style={styles.titleSeparator}/>
-                                <Text style={styles.text}>{text1}</Text>
-                            </View>
-                        </View>
+                        {personalInfoList.length > 0 &&
+                            personalInfoList.map((pi, index) => {
+                                return (
 
-                        <View style={styles.left65}>
-                            <View style={styles.section}>
-                                <Text style={styles.sectionTitle}>{sectionTitle2}</Text>
-                                <View style={styles.titleSeparator}/>
-                                <Text style={styles.text}>{text2}</Text>
-                            </View>
-                        </View>
-
-                        <View style={styles.left65}>
-                            <View style={styles.section}>
-                                <Text style={styles.sectionTitle}>{sectionTitle3}</Text>
-                                <View style={styles.titleSeparator}/>
-                                <Text style={styles.text}>{text3}</Text>
-                            </View>
-                        </View>
+                                <View key={index} style={index == 0 ? styles.left85 : styles.left65}>
+                                    <View style={styles.section}>
+                                        <Text style={styles.sectionTitle}>{pi.sectionTitle}</Text>
+                                        <View style={styles.titleSeparator}/>
+                                        <Text style={styles.text}>{pi.text}</Text>
+                                    </View>
+                                </View>
+                                )
+                            })
+                        }
                     </View>
 
                     <View style={styles.rightPanel}>
