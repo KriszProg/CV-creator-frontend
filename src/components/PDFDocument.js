@@ -28,6 +28,7 @@ export function PDFDocument(props) {
     const projectList = props.fetchedCV.projectList;
     const jobList = props.fetchedCV.jobList;
     const qualificationList = props.fetchedCV.qualificationList;
+    const languageList = props.fetchedCV.languageList;
 
     const styles = StyleSheet.create({
         page: {
@@ -76,7 +77,6 @@ export function PDFDocument(props) {
             paddingLeft: '8mm',
             paddingRight: '5mm',
             flexGrow: 1,
-            // border: '1 solid blue'
         },
         left35: {
             height: '35mm',
@@ -101,8 +101,8 @@ export function PDFDocument(props) {
             height: '65mm',
             // border: '1 solid red'
         },
-        left80: {
-            height: '80mm',
+        left85: {
+            height: '85mm',
             // border: '1 solid red'
         },
         rightPanel: {
@@ -112,6 +112,10 @@ export function PDFDocument(props) {
             paddingRight: '8mm',
             flexGrow: 1,
             // border: '1 solid blue'
+        },
+        right30: {
+            height: '30mm',
+            // border: '1 solid red'
         },
         right35: {
             height: '35mm',
@@ -256,7 +260,7 @@ export function PDFDocument(props) {
                                 </View>
                             </View>
                         </View>
-                        <View style={styles.left80}>
+                        <View style={styles.left85}>
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitle}>{sectionTitle1}</Text>
                                 <View style={styles.titleSeparator}/>
@@ -353,7 +357,17 @@ export function PDFDocument(props) {
                             <View style={styles.section}>
                                 <Text style={styles.sectionTitle}>Spoken Languages</Text>
                                 <View style={styles.titleSeparator}/>
-                                <Text style={styles.text}>{text3}</Text>
+                                {languageList.map((lang, index) => {
+                                    return(
+                                    <View key={index}>
+                                        <Text style={styles.infoLineNormal}> 
+                                            <Text style={styles.infoLineBold}>{lang.language} </Text>
+                                            - {lang.level}
+                                        </Text>
+                                    </View>  
+                                    )
+                                })
+                                }
                             </View>
                         </View>
                     </View>
