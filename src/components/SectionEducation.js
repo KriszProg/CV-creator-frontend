@@ -51,7 +51,6 @@ function SectionEducation(props) {
 
     const prepareAndSave = (e) => {
         e.preventDefault();
-        console.log('prepareAndSave function starts execute...');
         let objectToPost = [];
         const items = Array.from(qualificationList);
         
@@ -69,10 +68,10 @@ function SectionEducation(props) {
     }
 
     return (
-        <div className='section' id='educations'>
+        <div className='section'>
             <form onSubmit={prepareAndSave}>
                 <div className="inline-button">
-                    <input className='editable-title' type='text' id='title-educations' name='cv-title' placeholder={'placeHolder'} defaultValue="Educations" required></input>
+                    <h2 className='section-title'>Educations</h2>
                     {qualificationList.length < 5  &&
                         <button type='button' className='add-button' onClick={addNewQualification}>ADD</button>
                     }
@@ -94,14 +93,14 @@ function SectionEducation(props) {
                                                         <img className='delete-icon' id={`delete${index}`} src={deleteIcon} alt='delete' onClick={deleteQualification}/>
                                                     </div>
                                                     <div className='card-top'>
-                                                        <input type='text' className='content-bold w70' id={`qua-name${index}`} name={`qua-name${index}`} placeholder='Enter name of qualification...' defaultValue={name} required></input>
-                                                        <input type='text' className='content-bold w20' id={`qua-degree${index}`} name={`qua-degree${index}`} placeholder='eg: Intermediate' defaultValue={degree} required></input>
+                                                        <input type='text' className='content-bold w70' id={`qua-name${index}`} placeholder='Enter name of qualification...' defaultValue={name} required></input>
+                                                        <input type='text' className='content-bold w20' id={`qua-degree${index}`} placeholder='eg: Intermediate' defaultValue={degree} required></input>
                                                     </div>
                                                     <div className='card-middle'>
-                                                        <input type='number' className='content-normal w10-centered' id={`qua-year-from${index}`} name={`qua-year-from${index}`} min='1990' max='2099' placeholder='eg: 1990' defaultValue={yearFrom} required></input>
-                                                        <input type='number' className='content-normal w10-centered' id={`qua-year-to${index}`} name={`job-year-to${index}`} min='1990' max='2099'placeholder='eg: 1992' defaultValue={yearTo} required></input>
-                                                        <input type='text' className='content-normal w50' id={`qua-school${index}`} name={`qua-school${index}`} placeholder='Enter name of school you learned in...' defaultValue={school} required></input>
-                                                        <input type='text' className='content-normal w20' id={`qua-city-of-school${index}`} name={`qua-city-of-school${index}`} placeholder='eg: Budapest' defaultValue={cityOfSchool} required></input>
+                                                        <input type='number' className='content-normal w10-centered' id={`qua-year-from${index}`} min='1990' max='2099' placeholder='eg: 1990' defaultValue={yearFrom} required></input>
+                                                        <input type='number' className='content-normal w10-centered' id={`qua-year-to${index}`} min='1990' max='2099'placeholder='eg: 1992' defaultValue={yearTo} required></input>
+                                                        <input type='text' className='content-normal w50' id={`qua-school${index}`} placeholder='Enter name of school you learned in...' defaultValue={school} required></input>
+                                                        <input type='text' className='content-normal w20' id={`qua-city-of-school${index}`} placeholder='eg: Budapest' defaultValue={cityOfSchool} required></input>
                                                     </div>
                                                 </div>
                                             </li>
